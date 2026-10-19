@@ -1,0 +1,542 @@
+/* ==========================================================================
+	Pathshala - Live preview landing page
+	Builds on assets/css/site.min.css (a copy of the template CSS: Bootstrap +
+	template components, refreshed by copy-assets.sh). Only landing-specific layout lives here.
+	========================================================================== */
+:root {
+	--lp-navy: #07253f;
+	--lp-navy-2: #0c3457;
+	--lp-green: #17733e;
+	--lp-green-light: #27ae60;
+	--lp-blue: #009ddc;
+	--lp-muted: #f4f7f5;
+	--lp-border: #e6ebe8;
+	--lp-shadow: 0 1.5rem 3rem rgba(7, 37, 63, .14);
+	--lp-radius: 1rem;
+}
+
+html {
+	scroll-padding-top: 5rem;
+}
+
+/* ---------- Navbar ---------- */
+.lp-nav {
+	position: sticky;
+	z-index: 1030;
+	top: 0;
+	padding: .75rem 0;
+	background: rgba(7, 37, 63, .96);
+	backdrop-filter: blur(8px);
+	transition: box-shadow .3s ease;
+}
+
+.lp-nav.is-scrolled {
+	box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .18);
+}
+
+.lp-nav .navbar-nav .nav-link {
+	color: rgba(255, 255, 255, .85);
+	font-weight: 600;
+}
+
+.lp-nav .navbar-nav .nav-link:hover,
+.lp-nav .navbar-nav .nav-link:focus-visible {
+	color: #fff;
+}
+
+.lp-brand {
+	display: inline-flex;
+	align-items: center;
+	gap: .75rem;
+	color: #fff;
+	font-family: 'Nunito', sans-serif;
+	font-size: 1.375rem;
+	font-weight: 800;
+	line-height: 1;
+}
+
+.lp-brand:hover {
+	color: #fff;
+}
+
+.lp-brand-mark {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	background: var(--lp-green-light);
+	font-size: 1.125rem;
+}
+
+.lp-brand small {
+	display: block;
+	margin-top: .25rem;
+	color: rgba(255, 255, 255, .65);
+	font-family: 'Open Sans', sans-serif;
+	font-size: .625rem;
+	font-weight: 600;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+}
+
+.lp-nav .navbar-toggler {
+	border-color: rgba(255, 255, 255, .4);
+	color: #fff;
+}
+
+/* ---------- Hero ---------- */
+.lp-hero {
+	position: relative;
+	overflow: hidden;
+	padding: 4.5rem 0 5rem;
+	background:
+		radial-gradient(circle at 85% 15%, rgba(39, 174, 96, .3), transparent 45%),
+		radial-gradient(circle at 5% 90%, rgba(0, 157, 220, .18), transparent 40%),
+		var(--lp-navy);
+	color: #fff;
+}
+
+@media (min-width: 992px) {
+	.lp-hero {
+		padding: 6rem 0 7rem;
+	}
+}
+
+.lp-hero .eyebrow {
+	color: var(--lp-green-light);
+}
+
+.lp-hero h1 {
+	margin-bottom: 1.25rem;
+	color: #fff;
+	font-size: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+	line-height: 1.1;
+}
+
+.lp-hero h1 span {
+	color: var(--lp-green-light);
+}
+
+.lp-hero-text {
+	max-width: 34rem;
+	margin-bottom: 1.75rem;
+	color: rgba(255, 255, 255, .85);
+	font-size: 1.125rem;
+}
+
+.lp-badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	margin: 0 0 2rem;
+	padding: 0;
+	list-style: none;
+}
+
+.lp-badges li {
+	display: inline-flex;
+	align-items: center;
+	gap: .375rem;
+	padding: .375rem .875rem;
+	border: 1px solid rgba(255, 255, 255, .18);
+	border-radius: 50rem;
+	background: rgba(255, 255, 255, .06);
+	font-size: .8125rem;
+	font-weight: 600;
+}
+
+.lp-badges i {
+	color: var(--lp-green-light);
+}
+
+.lp-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+/* Layered screenshots */
+.lp-hero-shots {
+	position: relative;
+	padding: 0 0 3rem 0;
+}
+
+.lp-hero-shots .browser-frame:last-child {
+	position: absolute;
+	right: -1.5rem;
+	bottom: 0;
+	width: 58%;
+}
+
+@media (max-width: 575.98px) {
+	.lp-hero-shots {
+		padding: 0;
+	}
+
+	.lp-hero-shots .browser-frame:last-child {
+		display: none;
+	}
+}
+
+/* ---------- Browser frame ---------- */
+.browser-frame {
+	overflow: hidden;
+	border-radius: .75rem;
+	background: #fff;
+	box-shadow: var(--lp-shadow);
+}
+
+.browser-frame::before {
+	content: '';
+	display: block;
+	height: 1.5rem;
+	background:
+		radial-gradient(circle at .875rem 50%, #ff6159 .25rem, transparent .27rem),
+		radial-gradient(circle at 1.625rem 50%, #ffbd2e .25rem, transparent .27rem),
+		radial-gradient(circle at 2.375rem 50%, #28c941 .25rem, transparent .27rem),
+		#eef1f3;
+}
+
+.browser-frame img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.lp-hero .browser-frame {
+	border: 1px solid rgba(255, 255, 255, .12);
+}
+
+/* ---------- Numbers ---------- */
+.lp-stats {
+	position: relative;
+	z-index: 2;
+	margin-top: -2.5rem;
+}
+
+.lp-stats-inner {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1px;
+	overflow: hidden;
+	border-radius: var(--lp-radius);
+	background: var(--lp-border);
+	box-shadow: var(--lp-shadow);
+}
+
+@media (min-width: 768px) {
+	.lp-stats-inner {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+.lp-stat {
+	padding: 1.5rem 1rem;
+	background: #fff;
+	text-align: center;
+}
+
+.lp-stat strong {
+	display: block;
+	color: var(--lp-navy);
+	font-family: 'Nunito', sans-serif;
+	font-size: clamp(2rem, 1.6rem + 1.5vw, 2.75rem);
+	font-weight: 800;
+	line-height: 1.1;
+}
+
+.lp-stat span {
+	color: #646c74;
+	font-size: .8125rem;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+}
+
+/* ---------- Demo cards (scroll on hover) ---------- */
+.demo-card {
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+	border-radius: var(--lp-radius);
+	background: #fff;
+	box-shadow: var(--lp-shadow);
+	transition: transform .3s ease;
+}
+
+.demo-card:hover {
+	transform: translateY(-.375rem);
+}
+
+.demo-shot {
+	position: relative;
+	overflow: hidden;
+	aspect-ratio: 4 / 4.2;
+	border-bottom: 1px solid var(--lp-border);
+}
+
+.demo-shot img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: top;
+	transition: object-position 5s ease-in-out;
+}
+
+.demo-card:hover .demo-shot img,
+.demo-card:focus-within .demo-shot img {
+	object-position: bottom;
+}
+
+.demo-tag {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	padding: .25rem .75rem;
+	border-radius: 50rem;
+	background: var(--lp-green);
+	color: #fff;
+	font-size: .75rem;
+	font-weight: 700;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+}
+
+.demo-body {
+	padding: 1.5rem 1.5rem 1.75rem;
+}
+
+.demo-body p {
+	margin-bottom: 1rem;
+	font-size: .9375rem;
+}
+
+/* ---------- Inner page cards ---------- */
+.page-card {
+	display: block;
+	height: 100%;
+	color: var(--lp-navy);
+	text-align: center;
+}
+
+.page-card .browser-frame {
+	margin-bottom: 1rem;
+	box-shadow: 0 .75rem 2rem rgba(7, 37, 63, .1);
+	transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.page-card:hover .browser-frame,
+.page-card:focus-visible .browser-frame {
+	box-shadow: var(--lp-shadow);
+	transform: translateY(-.375rem);
+}
+
+.page-card strong {
+	font-family: 'Nunito', sans-serif;
+	font-size: 1.0625rem;
+}
+
+.page-card:hover {
+	color: var(--lp-green);
+}
+
+.page-chips {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: .5rem;
+	margin: 3rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.page-chips a {
+	display: inline-flex;
+	align-items: center;
+	gap: .5rem;
+	padding: .5rem 1rem;
+	border: 1px solid var(--lp-border);
+	border-radius: 50rem;
+	background: #fff;
+	color: var(--lp-navy);
+	font-size: .875rem;
+	font-weight: 600;
+	transition: border-color .2s ease, color .2s ease;
+}
+
+.page-chips a:hover {
+	border-color: var(--lp-green-light);
+	color: var(--lp-green);
+}
+
+.page-chips i {
+	color: var(--lp-green-light);
+}
+
+/* ---------- Dashboards ---------- */
+.dash-list {
+	margin: 1.5rem 0 2rem;
+	padding: 0;
+	list-style: none;
+}
+
+.dash-list li {
+	position: relative;
+	margin-bottom: .75rem;
+	padding-left: 2rem;
+}
+
+.dash-list li::before {
+	content: '\f00c';
+	position: absolute;
+	top: .125rem;
+	left: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.375rem;
+	height: 1.375rem;
+	border-radius: 50%;
+	background: rgba(39, 174, 96, .14);
+	color: var(--lp-green);
+	font-family: 'Font Awesome 7 Free';
+	font-size: .6875rem;
+	font-weight: 900;
+}
+
+/* ---------- Responsive showcase ---------- */
+.phone-frame {
+	position: relative;
+	width: min(100%, 17.5rem);
+	margin: 0 auto;
+	padding: .75rem;
+	border-radius: 2.5rem;
+	background: var(--lp-navy);
+	box-shadow: var(--lp-shadow);
+}
+
+.phone-frame img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 1.875rem;
+}
+
+.lp-devices {
+	position: relative;
+}
+
+.lp-devices .browser-frame {
+	width: 85%;
+}
+
+.lp-devices .phone-frame {
+	position: absolute;
+	right: 0;
+	bottom: -2rem;
+	width: 34%;
+	padding: .5rem;
+	border-radius: 1.75rem;
+}
+
+.lp-devices .phone-frame img {
+	border-radius: 1.375rem;
+}
+
+@media (max-width: 575.98px) {
+	.lp-devices .browser-frame {
+		width: 100%;
+	}
+
+	.lp-devices .phone-frame {
+		display: none;
+	}
+}
+
+/* ---------- Built with ---------- */
+.tech-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: .75rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tech-list li {
+	display: inline-flex;
+	align-items: center;
+	gap: .625rem;
+	padding: .75rem 1.25rem;
+	border: 1px solid var(--lp-border);
+	border-radius: .75rem;
+	background: #fff;
+	color: var(--lp-navy);
+	font-weight: 700;
+}
+
+.tech-list i {
+	color: var(--lp-green);
+	font-size: 1.25rem;
+}
+
+.tech-list small {
+	color: #646c74;
+	font-weight: 600;
+}
+
+/* ---------- CTA & footer ---------- */
+.lp-cta {
+	padding: 4.5rem 0;
+	background:
+		radial-gradient(circle at 90% 10%, rgba(39, 174, 96, .35), transparent 50%),
+		var(--lp-navy);
+	color: rgba(255, 255, 255, .85);
+	text-align: center;
+}
+
+.lp-cta h2 {
+	margin-bottom: 1rem;
+	color: #fff;
+	font-size: clamp(1.875rem, 1.3rem + 2vw, 2.75rem);
+}
+
+.lp-cta p {
+	max-width: 36rem;
+	margin: 0 auto 2rem;
+	font-size: 1.0625rem;
+}
+
+.lp-cta .lp-actions {
+	justify-content: center;
+}
+
+.lp-footer {
+	padding: 1.75rem 0;
+	background: #051a2d;
+	color: rgba(255, 255, 255, .65);
+	font-size: .875rem;
+}
+
+.lp-footer a {
+	color: #fff;
+}
+
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+	.demo-shot img,
+	.demo-card,
+	.page-card .browser-frame {
+		transition: none;
+	}
+}
+
+/* Show only the top of a tall screenshot */
+.shot-crop img {
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	object-position: top;
+}
